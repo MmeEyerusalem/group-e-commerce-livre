@@ -1,0 +1,265 @@
+:root {
+  --verte: #026670;
+  --verte-blue: #9FEDD7;
+  --creme: #FEF9C7;
+  --jaune: #FCE181;
+  --gray: #EDEAE5;
+  --black: #000;
+ --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+/* Image de fond */
+.affiche {
+   background-image: url(../img/bg_navigation.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+  height: 80vh; 
+}
+
+/* Div contenant les livres */
+.livres{
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--gray);
+}
+
+/* balises */
+h1, h3, a {
+  font-family: lato;
+}
+
+/* phrase d'introduction */
+.phrase{
+  color: var(--verte);
+}
+
+/* fond pour le header */
+.en-tete {
+  background-color: var(--verte) !important;
+}
+
+/* color de le titre */
+.site-name {
+  padding: 30%;
+  color: var(--verte);
+}
+
+#dropdownMenu {
+  display: none;  /*L'élément ne s'affiche pas sur la page*/
+  position: absolute;
+  background-color: var(--verte-blue);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+#dropdownMenu .choice {
+  color: var(--verte);
+ /* padding: 12px 16px;*/
+  text-decoration: none; 
+  display: block;
+}
+
+#dropdownMenu .choice:hover {
+  background-color: var(--jaune);
+}
+/*
+.login:hover{
+  background-color: var(--jaune);
+}*/
+
+
+/* texte final de footer a cote de logo */
+.texte-final {
+  padding-top: 10%;
+  padding-left: 15px;
+}
+/* Logo footer */
+.logo-retrait {
+  padding-left: 5%;
+}
+/* Reseaux sociaux footer */
+.reseaux { 
+  padding-left: 5%;
+}
+/* Font footer */
+.final {
+  background-color: var(--verte);
+}
+/* Padding donees footer */
+.donees {
+  padding-left: 15%;
+}
+
+/* ************************Contactez-nous****************** */
+.bg-contact .bg-register{
+  background-color: var(--gray);
+}
+
+/* Image au fond page contact */
+.affiche-contact {
+  background-image: url(../img/e-mail-4487083-copy.jpg);
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  height: 50vh; 
+}
+
+/* Titre de la page contact */
+.titre-2 {
+  padding:5%;
+}
+
+/* Champ du le formulaire */
+.search-form {
+  max-width: 30%;    
+  padding: 10px;
+  align-items: self-end;
+  display: flex;
+  justify-content: end;  
+}
+
+.input-search  {
+  position: relative;
+  background: transparent;
+  padding: 10px;
+}
+
+.input-search[type="search"]::placeholder {
+  color: white;
+}
+
+.search-icon {
+  position: absolute;
+  background-color: transparent;
+  font-size: x-large;
+}
+/* backgrou formulaire */
+.formV {
+  background-color: var(--verte);
+}
+
+/* Bouton formulaire */
+.bouton {
+  background-color: var(--jaune); 
+  color: var(--verte);
+  border: var(--gray); 
+}
+
+/* Border input formulaire du contact */
+.input-custom {
+  border-color: var(--jaune); 
+  border-width: 3px; 
+  border-style: solid; 
+}
+ 
+.bg-promo {
+  background-color: rgb(214, 210, 210) !important;
+}
+
+.small-img1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px; 
+}
+
+.small-img2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .small-img1 img {
+  height: 50%;
+  width: 100%;
+  padding: 10px;
+}
+
+.small-img2 img {
+  height: 50%;
+  width: 100%;
+  padding: 10px;
+}
+
+.promo1 {
+  margin: 10px;
+  background-color: rgb(255, 255, 255);
+}
+.promo2 {
+  margin: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Enregistrement */
+.affiche-inscription {
+    background-image: url(../img/bg_register.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 95vh; 
+}
+
+.titre-3 {
+  padding: 25%;
+}
+
+.down {
+  color: var(--jaune);
+}
+
+/* a propos */
+.aproposImg{
+  background-image: url("../img/adult-education-2706977_1280.jpg");
+  height: 60vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.paragApropos{
+  display: block;  
+  justify-content: center; 
+}
+
+.aproposImg2{
+  width: 50%; 
+}
+
+
+/* profil.php  */
+
+.carousel1{
+  background-image: url("../img/bg-img-caroussel.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width: 100%;
+}
+
+
+/* header.php*/
+
+.dropDown{
+  text-decoration: none;
+}
+
+/*dashboard.php */
+
+.listG a :hover{
+  background-color: #026670;
+}
+
