@@ -15,9 +15,7 @@ define("DBNAME", "bookstore");
 function connexionBdd() {
 
         $pdo = new PDO('mysql:host=localhost;dbname=bookstore;charset=utf8', 'root', '');
-
         $dsn = "mysql:host=" .DBHOST.";dbname=".DBNAME.";charset=utf8";
-
         try {
             
             $pdo = new PDO($dsn, DBUSER, DBPASS);
@@ -31,9 +29,7 @@ function connexionBdd() {
 
         }
 
-        return $pdo;
-
-        
+        return $pdo; 
 }
 // connexionBdd();
 
@@ -58,7 +54,6 @@ function createTableUsers() {
     )";
 
     $request = $pdo->exec($sql);
-
 }
 
 // createTableUsers();
@@ -253,4 +248,144 @@ function addLivre($category, string $title, string $ecrivain, string $resume, st
         ':price'=>$price,
         ':stock'=>$stock
     ));
+}
+
+//////////////////////Fonction pour afficher un livre////////////////////////////////////////////
+
+function showLivre(int $id): mixed
+{
+    $pdo = connexionBdd();
+    $sql = "SELECT* FROM livre WHERE id_livre = :id";
+    $request = $pdo->prepare($sql);
+    $request->execute(
+        array(
+            ':id' => $id
+        )
+    );
+
+    $result = $request->fetch();
+    return $result;
+}
+
+//////////////////////////Update film//////////////////////////
+function updateLivre(int $id, int $id_categorie, string $title, string $ecrivain, string $resume, string $date, string $ageLimit,  string $image, float $price, int $stock): void
+{
+    $pdo = connexionBdd();
+    $sql = "UPDATE livre SET
+                        id_livre = :id,
+                        title = :title,
+                        ecrivain = :ecrivain,
+                        resume = :resume,
+                        date = :date,
+                        ageLimit = ageLimit,
+                        image = :image,
+                        price = :price,
+                        stock = :stock,
+                        id_categorie = :id_categorie
+    
+                  WHERE id_livre = :id";
+
+    $request = $pdo->prepare($sql);
+    $request->execute(
+        array(
+            ':id' => $id,
+            ':title' => $title,
+            ':ecrivain' => $ecrivain,
+            ':resume' => $resume,
+            ':date' => $date,
+            ':ageLimit' => $ageLimit,
+            ':image' => $image,
+            ':price' => $price,
+            ':stock' => $stock,
+            ':category_id' => $category_id          
+        )
+    );
+}
+
+////////////////////////fonction pour ajouter un livre/////////////////////////////////
+
+// function addLivre($id_categorie, string $title, string $ecrivain, string $resume, string $date, string $ageLimit,  string $image, float $price, int $stock): void
+// {
+
+//     $pdo = connexionBdd();
+
+//     $sql = "INSERT INTO livre (id_categorie, title, ecrivain, resume, date, ageLimit, image, price, stock) VALUES (:id_categorie, :title, :ecrivain, :resume, :date, :ageLimit, :image, :price, :stock)";
+
+//     $request = $pdo->prepare($sql);
+//     $request->execute(
+//         array(
+//             ':id_categorie' => $id_categorie,
+//             ':title' => $title,
+//             ':ecrivain' => $ecrivain,
+//             ':resume' => $resume,
+//             ':date' => $date,
+//             ':ageLimit' => $ageLimit,
+//             ':image' => $image,
+//             ':price' => $price,
+//             ':stock' => $stock
+//         )
+//     );
+// }
+
+// //////////  Fonction pour supprimer un livre/////////////
+function deleteLivre(int $id): void
+{
+    $pdo = connexionBdd();
+
+    $sql = "DELETE FROM livre WHERE id_livre = :id";
+    $request = $pdo->prepare($sql);
+    $request->execute([':id' => $id]);
+}
+
+///////////Une fonction pour récupérer et afficher tout les livres///////////////
+
+function allLivres(): array
+{
+    $pdo = connexionBdd();
+    $sql = "SELECT livres.*, categories.name as genre FROM livres
+        INNER JOIN categories
+        ON livres.id_categorie = categories.id_categorie";
+    $request = $pdo->query($sql);
+    $result = $request->fetchAll();
+
+    return $result;
+}
+
+//////////////////////////Fonction pour récupérer tout les utilisateurs////////////////////////////////////
+function allUsers(): array
+{
+    $pdo = connexionBdd();
+    $sql = "SELECT* FROM users";
+    $request = $pdo->query($sql);
+    $result = $request->fetchAll();
+    return $result;
+}
+
+////////////////////////////////Une fonction pour récupérer toutes les catégories////////////////////////////////
+
+function allCategorie(): array
+{
+
+    $pdo = connexionBdd();
+    $sql = "SELECT* FROM categorie";
+    $request = $pdo->query($sql);
+    $result = $request->fetchAll();
+    return $result;
+}
+
+
+//////////////////////////////Une fonction pour ajouter une categorie////////////////////////////
+function addCategory(string $nomCategory, string $description): void
+{
+    $pdo = connexionBdd();
+    $sql = "INSERT INTO categorie (nom, description) VALUES (:nom, :description)";
+    $request = $pdo->prepare($sql);
+    $request->execute(
+        array(
+
+            ':nom' => $nomCategory,
+            ':description' => $description
+
+        )
+    );
 }

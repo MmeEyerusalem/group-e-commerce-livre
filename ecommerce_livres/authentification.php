@@ -50,48 +50,48 @@ if (!empty($_POST)) {
     }
 }
 
-if (!empty($_POST)) {
-    // debug($_POST);
+// if (!empty($_POST)) {
+//     // debug($_POST);
   
-    $verif = true;
+//     $verif = true;
   
-    foreach($_POST as $value) {
+//     foreach($_POST as $value) {
   
-      if (empty($value)) {
+//       if (empty($value)) {
   
-        $verif = false;
-      }
+//         $verif = false;
+//       }
   
-    }
+//     }
   
-    if (!$verif) {
-      debug($_POST);
+//     if (!$verif) {
+//       debug($_POST);
   
-      $info = alert("Veuillez renseigner tout les champs", "danger");
+//       $info = alert("Veuillez renseigner tout les champs", "danger");
   
-    } else {
+//     } else {
       
-      debug($_POST);
+//       debug($_POST);
   
-      $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : null;
-      $nom = isset($_POST['nom']) ? $_POST['nom'] : null;
-      $email = isset($_POST['email']) ? $_POST['email'] : null;
-      $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : ''; // Set to empty string if not present
+//       $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : null;
+//       $nom = isset($_POST['nom']) ? $_POST['nom'] : null;
+//       $email = isset($_POST['email']) ? $_POST['email'] : null;
+//       $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : ''; // Set to empty string if not present
   
-      $user = checkUser($email, $nom);
-          if ($user) {
+//       $user = checkUser($email, $nom);
+//           if ($user) {
               
-              if (!empty($mdp) && password_verify($mdp, $user['mdp'])){ // Add check for empty $mdp
-                  $_SESSION['user'] = $user;
+//               if (!empty($mdp) && password_verify($mdp, $user['mdp'])){ // Add check for empty $mdp
+//                   $_SESSION['user'] = $user;
   
-                  header("location:" .RACINE_SITE. "profil.php");
-              }else {
-              $info = alert("Les identifiants sont incorrectes", "danger");
-          }
-      }
+//                   header("location:" .RACINE_SITE. "profil.php");
+//               }else {
+//               $info = alert("Les identifiants sont incorrectes", "danger");
+//           }
+//       }
   
-      }
-  }
+//       }
+//   }
 
 
 
